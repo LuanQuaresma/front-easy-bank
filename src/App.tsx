@@ -1,17 +1,19 @@
-import { ThemeProvider } from "styled-components";
-import { defaultTheme } from "./styles/themes/default";
-import { GlobalStyle } from "./styles/global";
-import { Transactions } from "./pages/Transactions";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+import Login from './pages/Login/index.tsx';
+import Register from './pages/Login/register.tsx';
+import Transactions from './pages/Transactions/index.tsx';
 
-export function App() {
-
-  return (
-    <ThemeProvider theme={defaultTheme}>
-      <GlobalStyle />
-
-      <Transactions />
-    </ThemeProvider>
-  )
+function AppRouter() {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/home" element={<Transactions />} />
+            </Routes>
+        </Router>
+    );
 }
 
+export default AppRouter;
